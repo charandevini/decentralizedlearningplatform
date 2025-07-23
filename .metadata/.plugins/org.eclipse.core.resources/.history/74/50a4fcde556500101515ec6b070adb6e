@@ -1,0 +1,29 @@
+package com.dlp.peerreviewhubservice.dto;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.List;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+
+@Getter
+@Builder
+@AllArgsConstructor
+public class UserReviewResponse {
+	private Long userId;
+	private List<ReviewDetail> reviews;
+	
+	@Getter
+	@Builder
+	@AllArgsConstructor
+	public static class ReviewDetail {
+		private Long submissionId;
+		private Long reviewerId;
+		private Integer rating;
+		private String comments;
+		private Timestamp reviewedAt;
+	}
+}

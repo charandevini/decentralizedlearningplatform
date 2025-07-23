@@ -1,0 +1,17 @@
+package com.dlp.courseengineservice.dto;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
+public class UserResponse {
+	
+	@NotBlank
+	private String name;
+
+	@NotBlank
+	@Email
+	private String email;
+
+	@NotBlank
+	private String role; // 'instructor' or 'learner'
+}

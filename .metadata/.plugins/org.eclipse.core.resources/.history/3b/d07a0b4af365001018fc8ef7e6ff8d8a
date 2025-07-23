@@ -1,0 +1,51 @@
+package com.dlp.progresstrackerservice.service.impl;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.dlp.progresstrackerservice.dto.EnrollmentRequest;
+import com.dlp.progresstrackerservice.dto.EnrollmentResponse;
+import com.dlp.progresstrackerservice.dto.ProgressUpdateRequest;
+import com.dlp.progresstrackerservice.model.Enrollment;
+import com.dlp.progresstrackerservice.repository.EnrollmentRepository;
+import com.dlp.progresstrackerservice.service.EnrollmentService;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class EnrollmentServiceImpl implements EnrollmentService {
+
+	private final EnrollmentRepository enrollmentRepository;
+
+	@Override
+	public EnrollmentResponse createEnrollment(EnrollmentRequest request) {
+		Enrollment enrollment = Enrollment.builder().userId(request.getUserId()).courseId(request.getCourseId())
+				.progressPercent(0).createdBy(request.getCreatedBy()).build();
+
+		return EnrollmentResponse.fromEntity(enrollmentRepository.save(enrollment));
+	}
+
+	@Override
+	public EnrollmentResponse updateProgress(ProgressUpdateRequest request) {
+		Enrollment enrollment = enrollmentRepository.findById(request.getEnrollmentId())
+				.orElseThrow(() -> new RuntimeException("Enrollment not found"));
+
+		enrollment.setProgressPercent(request.getProgressPercent());
+
+		return EnrollmentResponse.fromEntity(enrollmentRepository.save(enrollment));
+	}
+
+	@Override
+	public List<EnrollmentResponse> bulkCreate(List<EnrollmentRequest> enrollmentRequests) {
+		List <EnrollmentResponse> enrollmentResponseList= new ArrayList<>();
+		
+		for(EnrollmentRequest enrollmentRequest : enrollmentRequests) {
+					enrollmentResponseList.add(null);
+		}
+	}
+
+}

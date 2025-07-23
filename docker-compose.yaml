@@ -1,0 +1,113 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - dlp-network
+
+  naming-server:
+    image: dlp/mmv3-naming-server:0.0.1
+    container_name: naming-server
+    ports:
+      - "8761:8761"
+    networks:
+      - dlp-network
+
+  zipkin-server:
+    image: openzipkin/zipkin:2.23
+    container_name: zipkin-server
+    ports:
+      - "9411:9411"
+    networks:
+      - dlp-network
+    restart: always
+
+  api-gateway:
+    image: dlp/mmv3-api-gateway:0.0.1
+    container_name: api-gateway
+    ports:
+      - "8765:8765"
+    networks:
+      - dlp-network
+    depends_on:
+      - naming-server
+    environment:
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://naming-server:8761/eureka
+      MANAGEMENT.ZIPKIN.TRACING.ENDPOINT: http://zipkin-server:9411/api/v2/spans
+
+  course-engine-service:
+    image: dlp/mmv3-course-engine-service:0.0.1
+    container_name: course-engine-service
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - naming-server
+    networks:
+      - dlp-network
+    environment:
+      SPRING_PROFILES_ACTIVE: default
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://naming-server:8761/eureka
+      SPRING_DATASOURCE_URL: jdbc:postgresql://host.docker.internal:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      MANAGEMENT.ZIPKIN.TRACING.ENDPOINT: http://zipkin-server:9411/api/v2/spans
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
+
+  progress-tracker-service:
+    image: dlp/mmv3-progress-tracker-service:0.0.1
+    container_name: progress-tracker-service
+    ports:
+      - "8001:8001"
+    depends_on:
+      - postgres
+      - naming-server
+    networks:
+      - dlp-network
+    environment:
+      SPRING_PROFILES_ACTIVE: default
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://naming-server:8761/eureka
+      SPRING_DATASOURCE_URL: jdbc:postgresql://host.docker.internal:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      MANAGEMENT.ZIPKIN.TRACING.ENDPOINT: http://zipkin-server:9411/api/v2/spans
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
+
+  peer-review-hub-service:
+    image: dlp/mmv3-peer-review-hub-service:0.0.1
+    container_name: peer-review-hub-service
+    ports:
+      - "8002:8002"
+    depends_on:
+      - postgres
+      - naming-server
+    networks:
+      - dlp-network
+    environment:
+      SPRING_PROFILES_ACTIVE: default
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://naming-server:8761/eureka
+      SPRING_DATASOURCE_URL: jdbc:postgresql://host.docker.internal:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      MANAGEMENT.ZIPKIN.TRACING.ENDPOINT: http://zipkin-server:9411/api/v2/spans
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
+
+volumes:
+  postgres_data:
+
+networks:
+  dlp-network:
+    driver: bridge

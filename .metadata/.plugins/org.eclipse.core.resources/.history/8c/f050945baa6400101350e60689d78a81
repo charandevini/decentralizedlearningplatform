@@ -1,0 +1,12 @@
+package com.dlp.courseengineservice.service;
+
+import com.dlp.courseengineservice.dto.UserRequest;
+import com.dlp.courseengineservice.dto.UserResponse;
+
+import jakarta.validation.Valid;
+
+public interface UserService {
+
+	public UserResponse createUser(@Valid UserRequest request);
+
+}

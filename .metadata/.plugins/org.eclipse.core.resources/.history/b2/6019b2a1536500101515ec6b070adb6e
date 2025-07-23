@@ -1,0 +1,14 @@
+package com.dlp.peerreviewhubservice.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
+
+@Getter
+public class SubmissionRequest {
+	private Long enrollmentId;
+	
+	private String content;
+	
+	@NotBlank(message = "Created By is Required")
+	private String createdBy;
+}

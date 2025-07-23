@@ -1,0 +1,5 @@
+package com.dlp.peerreviewhubservice.service.impl;
+
+public class SubmissionServiceImpl {
+
+}

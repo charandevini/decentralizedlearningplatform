@@ -1,0 +1,30 @@
+package com.dlp.progresstrackerservice.service.impl;
+
+import org.springframework.stereotype.Service;
+
+import com.dlp.progresstrackerservice.dto.EnrollmentRequest;
+import com.dlp.progresstrackerservice.dto.EnrollmentResponse;
+import com.dlp.progresstrackerservice.dto.ProgressUpdateRequest;
+import com.dlp.progresstrackerservice.model.Enrollment;
+import com.dlp.progresstrackerservice.service.EnrollmentService;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class EnrollmentServiceImpl implements EnrollmentService {
+
+	@Override
+	public EnrollmentResponse createEnrollment(EnrollmentRequest request) {
+		Enrollment enrollment = Enrollment.builder().userId(request.getUserId()).courseId(request.getCourseId())
+				.progressPercent(0).createdBy(request.getCreatedBy()).build();
+
+	}
+
+	@Override
+	public EnrollmentResponse updateProgress(ProgressUpdateRequest request) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

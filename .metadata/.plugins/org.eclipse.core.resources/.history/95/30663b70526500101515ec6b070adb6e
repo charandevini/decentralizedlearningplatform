@@ -1,0 +1,42 @@
+package com.dlp.peerreviewhubservice.model;
+
+import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "peer_reviews")
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class PeerReview {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@Column(name="submission_id")
+	private Long submissionId;
+
+	@Column(name = "reviewer_id")
+	private Long reviewerId;
+
+	private Integer rating;
+
+	@Column(columnDefinition = "TEXT")
+	private String comments;
+
+	@CreationTimestamp
+	private LocalDateTime reviewedAt;
+}

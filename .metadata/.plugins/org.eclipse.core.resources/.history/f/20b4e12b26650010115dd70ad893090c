@@ -1,0 +1,34 @@
+package com.dlp.courseengineservice.dto;
+
+import java.sql.Timestamp;
+
+import com.dlp.courseengineservice.model.Course;
+import com.dlp.courseengineservice.model.User;
+
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
+@Builder
+public class CourseResponse {
+	private Long courseId;
+
+	private Long instructorId;
+
+	private String instructorName;
+
+	private String title;
+
+	private String text;
+
+	private String description;
+
+	private String createdBy;
+
+	private Timestamp createdAt;
+	
+	public CourseResponse fromEntity(Course course) {
+		return CourseResponse.builder().courseId(course.getCourseId()).instructorId(course.getInstructorId()).instructorName(course.getInstructorName())
+				.title(course.getTitle()).text(course.getText()).createdBy(course.getCreatedBy()).createdAt(user.getCreatedAt()).build();
+	}
+}

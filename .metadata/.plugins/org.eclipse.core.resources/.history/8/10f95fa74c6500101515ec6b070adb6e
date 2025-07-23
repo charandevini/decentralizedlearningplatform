@@ -1,0 +1,5 @@
+package com.dlp.progresstrackerservice.service.impl;
+
+public class QuizScoreServiceImpl {
+
+}

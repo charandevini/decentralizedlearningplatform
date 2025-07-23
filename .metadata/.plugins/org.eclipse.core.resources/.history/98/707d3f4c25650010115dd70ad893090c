@@ -1,0 +1,12 @@
+package com.dlp.courseengineservice.service;
+
+import com.dlp.courseengineservice.dto.CourseRequest;
+import com.dlp.courseengineservice.dto.CourseResponse;
+
+import jakarta.validation.Valid;
+
+public interface CourseService {
+
+	public CourseResponse createCourse(@Valid CourseRequest request);
+
+}

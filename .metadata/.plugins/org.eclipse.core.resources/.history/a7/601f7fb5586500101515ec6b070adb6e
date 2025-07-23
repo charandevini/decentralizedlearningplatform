@@ -1,0 +1,46 @@
+package com.dlp.peerreviewhubservice.controller;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.dlp.peerreviewhubservice.dto.PeerReviewRequest;
+import com.dlp.peerreviewhubservice.dto.SubmissionRequest;
+import com.dlp.peerreviewhubservice.dto.UserReviewResponse;
+import com.dlp.peerreviewhubservice.service.PeerReviewService;
+import com.dlp.peerreviewhubservice.service.SubmissionService;
+
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+
+@RestController
+@RequestMapping("/api/peerreviews")
+@RequiredArgsConstructor
+public class PeerReviewController {
+
+	private final PeerReviewService peerReviewService;
+	
+	private final SubmissionService submissionService;
+
+	// 🔹 Submit assignment
+		@PostMapping("/submissions")
+		public ResponseEntity<?> submitAssignment(@Valid @RequestBody SubmissionRequest request) {
+			return ResponseEntity.ok(submissionService.createSubmission(request));
+		}
+
+		// 🔹 Submit peer review
+		@PostMapping("/reviews")
+		public ResponseEntity<?> submitReview(@Valid @RequestBody PeerReviewRequest request) {
+			return ResponseEntity.ok(peerReviewService.submitReview(request));
+		}
+
+		// 🔹 Get all reviews by user
+		@GetMapping("/users/{userId}")
+		public ResponseEntity<UserReviewResponse> getReviews(@PathVariable Long userId) {
+			return ResponseEntity.ok(peerReviewService.getReviewsByUser(userId));
+		}
+}

@@ -1,0 +1,25 @@
+package com.dlp.peerreviewhubservice.dto;
+
+import java.sql.Timestamp;
+
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
+@Builder
+public class SubmissionResponse {
+
+	private Long submissionId;
+
+	private Long enrollmentId;
+
+	private String content;
+
+	private Timestamp submittedAt;
+
+	private String createdBy;
+
+	private Timestamp createdAt;
+	
+	
+}

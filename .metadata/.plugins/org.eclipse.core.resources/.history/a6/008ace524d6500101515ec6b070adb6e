@@ -1,0 +1,22 @@
+package com.dlp.progresstrackerservice.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.dlp.progresstrackerservice.service.QuizScoreService;
+
+import lombok.RequiredArgsConstructor;
+
+@RestController
+@RequestMapping("/api/quizscores")
+@RequiredArgsConstructor
+public class QuizScoreController {
+
+	private final QuizScoreService quizScoreService;
+	
+	@PostMapping("/quizzes")
+    public QuizScore submitQuiz(@RequestBody QuizScoreRequest request) {
+        return progressService.submitQuiz(request);
+    }
+
+}

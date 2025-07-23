@@ -1,0 +1,31 @@
+package com.dlp.courseengineservice.dto;
+
+import java.sql.Timestamp;
+
+import org.hibernate.annotations.UpdateTimestamp;
+
+import jakarta.persistence.Column;
+import jakarta.validation.constraints.NotBlank;
+
+public class CourseRequest {
+
+	@Column(name = "instructor_id")
+	private Long instructorId;
+
+	@Column(name = "instructor_name")
+	private String instructorName;
+
+	private String title;
+
+	private String text;
+
+	private String description;
+
+	@NotBlank(message = "Created By is Required")
+	@Column(name = "created_by")
+	private String createdBy;
+
+	@Column(name = "created_at")
+	@UpdateTimestamp
+	private Timestamp createdAt;
+}

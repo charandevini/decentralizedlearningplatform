@@ -1,0 +1,31 @@
+package com.dlp.peerreviewhubservice.dto;
+
+import java.sql.Timestamp;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
+@Builder
+public class SubmissionResponse {
+
+	private Long submissionId;
+
+	private Long enrollmentId;
+
+	private String content;
+
+	private Timestamp submittedAt;
+
+	private String createdBy;
+
+	private Timestamp createdAt;
+}

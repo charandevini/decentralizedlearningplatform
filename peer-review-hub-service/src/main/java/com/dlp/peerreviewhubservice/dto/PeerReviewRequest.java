@@ -1,0 +1,18 @@
+package com.dlp.peerreviewhubservice.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
+
+@Getter
+public class PeerReviewRequest {
+	private Long submissionId;
+
+	private Long reviewerId;
+
+	private Integer rating;
+
+	private String comments;
+
+	@NotBlank(message = "Created By is Required")
+	private String createdBy;
+}

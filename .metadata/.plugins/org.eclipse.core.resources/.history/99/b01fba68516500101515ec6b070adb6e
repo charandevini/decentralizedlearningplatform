@@ -1,0 +1,6 @@
+package com.dlp.peerreviewhubservice.dto;
+
+public class SubmissionRequest {
+	private Long enrollmentId;
+	private String content;
+}

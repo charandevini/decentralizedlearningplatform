@@ -1,0 +1,10 @@
+package com.dlp.progresstrackerservice.service;
+
+import com.dlp.progresstrackerservice.dto.EnrollmentRequest;
+import com.dlp.progresstrackerservice.dto.EnrollmentResponse;
+
+public interface EnrollmentService {
+
+	public EnrollmentResponse createEnrollment(EnrollmentRequest request);
+
+}

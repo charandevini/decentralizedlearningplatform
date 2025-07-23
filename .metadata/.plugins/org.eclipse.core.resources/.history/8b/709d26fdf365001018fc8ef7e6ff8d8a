@@ -1,0 +1,5 @@
+package com.dlp.courseengineservice.feign.client;
+
+public class ProgressClient {
+
+}

@@ -1,0 +1,7 @@
+package com.dlp.progresstrackerservice.dto;
+
+public class CourseProgress {
+	private Long courseId;
+    private Integer progressPercent;
+    private List<Integer> quizScores;
+}

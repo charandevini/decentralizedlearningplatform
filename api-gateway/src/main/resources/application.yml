@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: course-engine-service
+          uri: lb://COURSE-ENGINE-SERVICE
+          predicates:
+            - Path=/api/courseengine/**
+
+        - id: progress-tracker-service
+          uri: lb://PROGRESS-TRACKER-SERVICE
+          predicates:
+            - Path=/api/enrollments/**
+
+        - id: peer-review-hub-service
+          uri: lb://PEER-REVIEW-HUB-SERVICE
+          predicates:
+            - Path=/api/peerreviews/**
+            
+            
+# Eureka Client Configuration
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+      
+server:
+  port: 8765

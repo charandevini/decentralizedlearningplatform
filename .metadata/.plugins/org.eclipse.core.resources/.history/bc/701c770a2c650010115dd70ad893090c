@@ -1,0 +1,10 @@
+package com.dlp.progresstrackerservice.dto;
+
+import jakarta.persistence.Column;
+
+public class EnrollmentRequest {
+	private Long userId;
+
+	private Long courseId;
+
+}

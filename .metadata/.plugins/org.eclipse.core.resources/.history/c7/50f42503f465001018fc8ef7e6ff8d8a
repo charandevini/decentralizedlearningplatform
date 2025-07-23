@@ -1,0 +1,6 @@
+package com.dlp.courseengineservice.feign.client;
+
+public interface ProgressClient {
+	@PostMapping("/api/enrollments/bulk")
+    void bulkEnroll(@RequestBody List<EnrollmentRequest> requests);
+}

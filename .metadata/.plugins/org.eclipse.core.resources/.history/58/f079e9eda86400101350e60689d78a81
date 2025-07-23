@@ -1,0 +1,13 @@
+package com.dlp.courseengineservice.dto;
+
+public class UserResponse {
+	 @NotBlank
+	    private String name;
+
+	    @NotBlank
+	    @Email
+	    private String email;
+
+	    @NotBlank
+	    private String role; // 'instructor' or 'learner'
+}

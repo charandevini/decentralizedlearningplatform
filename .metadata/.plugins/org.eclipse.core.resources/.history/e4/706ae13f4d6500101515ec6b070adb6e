@@ -1,0 +1,11 @@
+package com.dlp.progresstrackerservice.dto;
+
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
+@Builder
+public class UserProgressStats {
+	private Long userId;
+    private List<CourseProgress> enrollments;
+}

@@ -1,0 +1,32 @@
+package com.dlp.progresstrackerservice.dto;
+
+import java.sql.Timestamp;
+
+import com.dlp.progresstrackerservice.model.Enrollment;
+
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
+@Builder
+public class EnrollmentResponse {
+
+	private Long enrollmentId;
+
+	private Long userId;
+
+	private Long courseId;
+
+	private Integer progressPercent;
+
+	private String createdBy;
+
+	private Timestamp createdAt;
+
+	public static EnrollmentResponse fromEntity(Enrollment enrollment) {
+		return EnrollmentResponse.builder().enrollmentId(enrollment.getEnrollmentId()).userId(enrollment.getUserId())
+				.courseId(enrollment.getCourseId()).progressPercent(enrollment.getProgressPercent())
+				.createdBy(enrollment.getCreatedBy()).createdAt(enrollment.getCreatedAt()).build();
+	}
+
+}

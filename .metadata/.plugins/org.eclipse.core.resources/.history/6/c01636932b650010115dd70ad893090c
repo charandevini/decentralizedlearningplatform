@@ -1,0 +1,10 @@
+package com.dlp.progresstrackerservice.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="enrollments")
+public class Enrollment {
+
+}

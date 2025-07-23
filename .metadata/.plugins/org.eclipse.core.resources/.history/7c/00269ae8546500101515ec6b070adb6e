@@ -1,0 +1,10 @@
+package com.dlp.peerreviewhubservice.service;
+
+import com.dlp.peerreviewhubservice.dto.PeerReviewRequest;
+import com.dlp.peerreviewhubservice.dto.PeerReviewResponse;
+
+public interface PeerReviewService {
+
+	public PeerReviewResponse submitReview(PeerReviewRequest request);
+
+}

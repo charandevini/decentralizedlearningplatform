@@ -1,0 +1,10 @@
+package com.dlp.progresstrackerservice.service;
+
+import com.dlp.progresstrackerservice.dto.QuizScoreRequest;
+import com.dlp.progresstrackerservice.dto.QuizScoreResponse;
+
+public interface QuizScoreService {
+
+	QuizScoreResponse submitQuiz(QuizScoreRequest request);
+
+}

@@ -1,0 +1,23 @@
+package com.dlp.courseengineservice.dto;
+
+import java.sql.Timestamp;
+
+import jakarta.validation.constraints.NotBlank;
+
+public class CourseRequest {
+
+	private Long instructorId;
+
+	private String instructorName;
+
+	private String title;
+
+	private String text;
+
+	private String description;
+
+	@NotBlank(message = "Created By is Required")
+	private String createdBy;
+
+	private Timestamp createdAt;
+}

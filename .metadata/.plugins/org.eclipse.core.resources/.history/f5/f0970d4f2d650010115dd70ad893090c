@@ -1,0 +1,5 @@
+package com.dlp.progresstrackerservice.service;
+
+public interface EnrollmentService {
+
+}

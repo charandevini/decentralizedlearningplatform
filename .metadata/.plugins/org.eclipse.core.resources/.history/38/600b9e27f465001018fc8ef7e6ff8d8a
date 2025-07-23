@@ -1,0 +1,13 @@
+package com.dlp.courseengineservice.dto;
+
+import jakarta.validation.constraints.NotBlank;
+
+public class EnrollmentRequest {
+	private Long userId;
+
+	private Long courseId;
+
+	@NotBlank(message = "Created By is Required")
+	private String createdBy;
+
+}

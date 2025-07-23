@@ -1,0 +1,5 @@
+package com.dlp.courseengineservice.service;
+
+public interface UserService {
+
+}

@@ -1,0 +1,7 @@
+package com.dlp.courseengineservice.service.impl;
+
+import com.dlp.courseengineservice.service.UserService;
+
+public class UserServiceImpl implements UserService {
+
+}

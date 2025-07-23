@@ -1,0 +1,5 @@
+package com.dlp.courseengineservice.user;
+
+public class User {
+
+}

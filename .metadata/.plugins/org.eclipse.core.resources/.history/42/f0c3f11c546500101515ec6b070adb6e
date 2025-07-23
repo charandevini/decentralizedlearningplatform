@@ -1,0 +1,31 @@
+package com.dlp.peerreviewhubservice.dto;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+
+public class PeerReviewResponse {
+	private Long peerReviewId;
+
+	private Long submissionId;
+
+	private Long reviewerId;
+
+	private Integer rating;
+
+	private String comments;
+
+	private Timestamp reviewedAt;
+
+	private String createdBy;
+
+	private Timestamp createdAt;
+}

@@ -1,0 +1,14 @@
+package com.dlp.progresstrackerservice.dto;
+
+import java.util.List;
+
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
+@Builder
+public class CourseProgress {
+	private Long courseId;
+	private Integer progressPercent;
+	private List<Integer> quizScores;
+}

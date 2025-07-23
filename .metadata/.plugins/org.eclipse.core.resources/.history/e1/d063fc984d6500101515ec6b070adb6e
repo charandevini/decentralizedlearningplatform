@@ -1,0 +1,13 @@
+package com.dlp.progresstrackerservice.dto;
+
+import jakarta.validation.constraints.NotBlank;
+
+public class QuizScoreRequest {
+	private Long enrollmentId;
+
+	private Integer score;
+
+	@NotBlank(message = "Created By is Mandatory")
+	private String createdBy;
+
+}

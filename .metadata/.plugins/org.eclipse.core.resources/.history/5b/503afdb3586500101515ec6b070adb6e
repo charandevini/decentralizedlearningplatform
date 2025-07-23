@@ -1,0 +1,43 @@
+package com.dlp.peerreviewhubservice.controller;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.dlp.peerreviewhubservice.dto.PeerReviewRequest;
+import com.dlp.peerreviewhubservice.dto.SubmissionRequest;
+import com.dlp.peerreviewhubservice.dto.UserReviewResponse;
+import com.dlp.peerreviewhubservice.service.PeerReviewService;
+import com.dlp.peerreviewhubservice.service.SubmissionService;
+
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+
+@RestController
+@RequestMapping("/api/peerreviews")
+@RequiredArgsConstructor
+public class PeerReviewController {
+
+	private final PeerReviewService peerReviewService;
+	
+	private final SubmissionService submissionService;
+
+	@PostMapping
+	public ResponseEntity<?> submitAssignment(@Valid @RequestBody SubmissionRequest request) {
+		return ResponseEntity.ok(submissionService.createSubmission(request));
+	}
+
+	@PostMapping
+	public ResponseEntity<?> submitReview(@RequestBody PeerReviewRequest request) {
+		return ResponseEntity.ok(peerReviewService.submitReview(request));
+	}
+
+	@GetMapping("/{userId}")
+	public UserReviewResponse getReviews(@PathVariable Long userId) {
+		return peerReviewService.getReviewsByUser(userId);
+	}
+}

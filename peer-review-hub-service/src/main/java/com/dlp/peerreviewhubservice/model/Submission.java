@@ -1,0 +1,46 @@
+package com.dlp.peerreviewhubservice.model;
+
+import java.sql.Timestamp;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "submissions", schema = "postgres")
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class Submission {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long submissionId;
+
+	@Column(name = "enrollment_id")
+	private Long enrollmentId;
+
+	private String content;
+
+	@CreationTimestamp
+	private Timestamp submittedAt;
+
+	@Column(name = "created_by")
+	@NotBlank(message = "Created By is Required")
+	private String createdBy;
+
+	@Column(name = "created_at")
+	@UpdateTimestamp
+	private Timestamp createdAt;
+}

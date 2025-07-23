@@ -1,0 +1,6 @@
+package com.dlp.progresstrackerservice.dto;
+
+public class UserProgressStats {
+	private Long userId;
+    private List<CourseProgress> enrollments;
+}

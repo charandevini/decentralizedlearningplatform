@@ -1,0 +1,5 @@
+package com.dlp.courseengineservice.dto;
+
+public class CourseRequest {
+
+}

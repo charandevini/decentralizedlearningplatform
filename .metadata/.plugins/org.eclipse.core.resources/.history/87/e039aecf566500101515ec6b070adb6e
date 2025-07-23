@@ -1,0 +1,53 @@
+package com.dlp.peerreviewhubservice.model;
+
+import java.sql.Timestamp;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "peer_reviews")
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class PeerReview {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "peer_review_id")
+	private Long peerReviewId;
+
+	@Column(name = "submission_id")
+	private Long submissionId;
+
+	@Column(name = "reviewer_id")
+	private Long reviewerId;
+
+	private Integer rating;
+
+	private String comments;
+
+	@CreationTimestamp
+	@Column(name = "reviewed_at")
+	private Timestamp reviewedAt;
+
+	@Column(name = "created_by")
+	@NotBlank(message = "Created By is Required")
+	private String createdBy;
+
+	@Column(name = "created_at")
+	@UpdateTimestamp
+	private Timestamp createdAt;
+}

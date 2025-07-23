@@ -1,0 +1,10 @@
+package com.dlp.peerreviewhubservice.service.impl;
+
+import org.springframework.stereotype.Service;
+
+import com.dlp.peerreviewhubservice.service.PeerReviewService;
+
+@Service
+public class PeerReviewServiceImpl implements PeerReviewService{
+
+}

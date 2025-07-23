@@ -1,0 +1,27 @@
+package com.dlp.progresstrackerservice.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.dlp.progresstrackerservice.service.EnrollmentService;
+
+import lombok.RequiredArgsConstructor;
+
+@RestController
+@RequestMapping("/api/enrollments")
+@RequiredArgsConstructor
+public class EnrollmentController {
+	
+	private final EnrollmentService enrollmentService;
+	
+	 @PostMapping("/enrollments")
+	    public Enrollment enroll(@RequestBody EnrollmentRequest request) {
+	        return progressService.createEnrollment(request);
+	    }
+
+	    @PatchMapping("/progress")
+	    public Enrollment updateProgress(@RequestBody ProgressUpdateRequest request) {
+	        return progressService.updateProgress(request);
+	    }
+
+}

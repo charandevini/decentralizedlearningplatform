@@ -1,0 +1,13 @@
+package com.dlp.peerreviewhubservice;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class PeerReviewHubServiceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(PeerReviewHubServiceApplication.class, args);
+	}
+
+}

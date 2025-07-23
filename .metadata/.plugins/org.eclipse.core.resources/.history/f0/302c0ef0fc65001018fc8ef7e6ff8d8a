@@ -1,0 +1,13 @@
+package com.dlp.progresstrackerservice;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ProgressTrackerServiceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ProgressTrackerServiceApplication.class, args);
+	}
+
+}

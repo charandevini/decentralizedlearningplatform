@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=progress-tracker-service/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.dlp.progresstrackerservice.dto{UserProgressStats.java[UserProgressStats" modifiers="1" timestamp="1753005018845"/>
+    <typeInfo handle="=course-engine-service/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.dlp.courseengineservice.controller{CourseController.java[CourseController" modifiers="1" timestamp="1753104486769"/>
+    <typeInfo handle="=progress-tracker-service/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.dlp.progresstrackerservice.service.impl{EnrollmentServiceImpl.java[EnrollmentServiceImpl" modifiers="1" timestamp="1753075799474"/>
+    <typeInfo handle="=progress-tracker-service/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.dlp.progresstrackerservice.controller{ProgressTrackerController.java[ProgressTrackerController" modifiers="1" timestamp="1753075270444"/>
+    <typeInfo handle="=course-engine-service/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.dlp.courseengineservice.model{User.java[User" modifiers="1" timestamp="1752986704120"/>
+    <typeInfo handle="=course-engine-service/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.dlp.courseengineservice.model{Course.java[Course" modifiers="1" timestamp="1752988817085"/>
+</typeInfoHistroy>

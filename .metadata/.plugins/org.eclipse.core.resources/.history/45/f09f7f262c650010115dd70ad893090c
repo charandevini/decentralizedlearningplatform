@@ -1,0 +1,10 @@
+package com.dlp.progresstrackerservice.dto;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class ProgressUpdateRequest {
+    private Long enrollmentId;
+    private Integer progressPercent;
+}

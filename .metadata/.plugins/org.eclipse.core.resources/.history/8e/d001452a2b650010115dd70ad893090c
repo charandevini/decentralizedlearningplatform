@@ -1,0 +1,5 @@
+package com.dlp.progresstrackerservice.dto;
+
+public class EnrollmentRequest {
+
+}

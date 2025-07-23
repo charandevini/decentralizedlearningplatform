@@ -1,0 +1,5 @@
+package com.dlp.courseengineservice.controller;
+
+public class CourseController {
+
+}

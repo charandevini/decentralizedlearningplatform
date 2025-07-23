@@ -1,0 +1,10 @@
+package com.dlp.peerreviewhubservice.service;
+
+import com.dlp.peerreviewhubservice.dto.SubmissionRequest;
+import com.dlp.peerreviewhubservice.dto.SubmissionResponse;
+
+public interface SubmissionService {
+
+	SubmissionResponse createSubmission(SubmissionRequest request);
+
+}

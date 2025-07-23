@@ -1,0 +1,13 @@
+Refactoring.savealleditors=true
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="com.dlp.courseengineservice.dto.CourseResponse"><rhs name\="com.dlp.courseengineservice.dto.CourseResponse"/></lhs><lhs name\="com.dlp.progresstrackerservice.dto.EnrollmentResponse"><rhs name\="com.dlp.progresstrackerservice.dto.EnrollmentResponse"/></lhs><lhs name\="com.dlp.progresstrackerservice.dto.QuizScoreResponse"><rhs name\="com.dlp.progresstrackerservice.dto.QuizScoreResponse"/></lhs><lhs name\="com.dlp.peerreviewhubservice.dto.SubmissionResponse"><rhs name\="com.dlp.peerreviewhubservice.dto.SubmissionResponse"/></lhs><lhs name\="org.springframework.http.HttpEntity"><rhs name\="org.springframework.http.ResponseEntity"/></lhs><lhs name\="org.springframework.http.ResponseEntity"><rhs name\="org.springframework.http.ResponseEntity"/></lhs><lhs name\="com.dlp.peerreviewhubservice.dto.PeerReviewResponse"><rhs name\="com.dlp.peerreviewhubservice.dto.PeerReviewResponse"/></lhs><lhs name\="java.util.Collection"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.lang.Iterable"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.util.List"><rhs name\="java.util.ArrayList"/></lhs></history>
+content_assist_number_of_computers=14
+content_assist_proposals_background=255,255,255
+content_assist_proposals_foreground=0,0,0
+eclipse.preferences.version=1
+org.eclipse.jdt.internal.ui.navigator.layout=2
+org.eclipse.jdt.internal.ui.navigator.librariesnode=true
+org.eclipse.jdt.ui.formatterprofiles.version=23
+spelling_locale_initialized=true
+typefilter_migrated_2=true
+useAnnotationsPrefPage=true
+useQuickDiffPrefPage=true

@@ -1,0 +1,11 @@
+package com.dlp.peerreviewhubservice.service;
+
+import com.dlp.peerreviewhubservice.dto.SubmissionRequest;
+
+import jakarta.validation.Valid;
+
+public interface SubmissionService {
+
+	Object createSubmission(SubmissionRequest request);
+
+}

@@ -1,0 +1,10 @@
+package com.dlp.progresstrackerservice.service.impl;
+
+import org.springframework.stereotype.Service;
+
+import com.dlp.progresstrackerservice.service.QuizScoreService;
+
+@Service
+public class QuizScoreServiceImpl implements QuizScoreService {
+
+}

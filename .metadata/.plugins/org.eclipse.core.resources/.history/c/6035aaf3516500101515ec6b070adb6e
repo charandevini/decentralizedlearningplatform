@@ -1,0 +1,33 @@
+package com.dlp.peerreviewhubservice.dto;
+
+import java.sql.Timestamp;
+
+import com.dlp.peerreviewhubservice.model.Submission;
+import com.dlp.progresstrackerservice.dto.QuizScoreResponse;
+import com.dlp.progresstrackerservice.model.QuizScore;
+
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
+@Builder
+public class SubmissionResponse {
+
+	private Long submissionId;
+
+	private Long enrollmentId;
+
+	private String content;
+
+	private Timestamp submittedAt;
+
+	private String createdBy;
+
+	private Timestamp createdAt;
+	
+	public static SubmissionResponse fromEntity(Submission submission) {
+		return SubmissionResponse.builder().submissionId(submission.getSubmissionId())
+				.enrollmentId(submission.getEnrollmentId()).content(submission.getContent()).takenAt(quizScore.getTakenAt())
+				.createdBy(quizScore.getCreatedBy()).createdAt(quizScore.getCreatedAt()).build();
+	}
+}

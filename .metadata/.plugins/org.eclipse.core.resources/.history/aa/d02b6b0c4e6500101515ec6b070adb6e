@@ -1,0 +1,22 @@
+package com.dlp.progresstrackerservice.service.impl;
+
+import org.springframework.stereotype.Service;
+
+import com.dlp.progresstrackerservice.dto.QuizScoreRequest;
+import com.dlp.progresstrackerservice.dto.QuizScoreResponse;
+import com.dlp.progresstrackerservice.repository.QuizScoreRepository;
+import com.dlp.progresstrackerservice.service.QuizScoreService;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class QuizScoreServiceImpl implements QuizScoreService {
+
+	private final QuizScoreRepository quizScoreRepository;
+	
+	@Override
+	public QuizScoreResponse submitQuiz(QuizScoreRequest request) {
+	}
+
+}

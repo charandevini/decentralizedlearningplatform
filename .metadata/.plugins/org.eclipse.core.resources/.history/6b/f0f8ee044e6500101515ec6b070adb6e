@@ -1,0 +1,18 @@
+package com.dlp.progresstrackerservice.dto;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
+public class QuizScoreResponse {
+	private Long quizScoreId;
+
+	private Long enrollmentId;
+
+	private Integer score;
+
+	private LocalDateTime takenAt;
+
+	private String createdBy;
+
+	private Timestamp createdAt;
+}

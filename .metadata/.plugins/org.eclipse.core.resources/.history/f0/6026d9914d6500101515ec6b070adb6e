@@ -1,0 +1,6 @@
+package com.dlp.progresstrackerservice.dto;
+
+public class QuizScoreRequest {
+	private Long enrollmentId;
+    private Integer score;
+}

@@ -1,0 +1,12 @@
+package com.dlp.peerreviewhubservice.feign.client;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+public class ProgressClient {
+	@GetMapping("/api/enrollments/stats/{userId}")
+	UserProgressStats getUserStats(@PathVariable Long userId);
+
+	@GetMapping("/api/enrollments/exists/{userId}/{courseId}")
+	boolean isEnrolled(@PathVariable Long userId, @PathVariable Long courseId);
+}

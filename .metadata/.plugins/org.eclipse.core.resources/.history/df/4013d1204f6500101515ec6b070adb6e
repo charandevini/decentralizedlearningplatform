@@ -1,0 +1,31 @@
+package com.dlp.progresstrackerservice.controller;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.dlp.progresstrackerservice.dto.QuizScoreRequest;
+import com.dlp.progresstrackerservice.service.QuizScoreService;
+
+import lombok.RequiredArgsConstructor;
+
+@RestController
+@RequestMapping("/api/quizscores")
+@RequiredArgsConstructor
+public class QuizScoreController {
+
+	private final QuizScoreService quizScoreService;
+
+	@PostMapping
+	public ResponseEntity<?> submitQuiz(@RequestBody QuizScoreRequest request) {
+		return ResponseEntity.ok(quizScoreService.submitQuiz(request));
+	}
+	
+	 @GetMapping("/stats/{userId}")
+	    public UserProgressStats getStats(@PathVariable Long userId) {
+	        return progressService.getUserStats(userId);
+	    }
+
+}

@@ -1,0 +1,35 @@
+package com.dlp.courseengineservice.user;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name="users")
+@Getter
+@Setter
+@Builder
+public class User {
+	
+	@Column(name="user_id")
+	private Long userId;
+	
+	@NotBlank(message = "UserName is Mandatory")
+	private String userName;
+
+	@NotBlank(message = "Email is Mandatory")
+	@Email
+	private String email;
+
+	@NotBlank(message = "Role is Mandatory")
+	private String role; // 'instructor' or 'learner'
+
+	@NotBlank(message = "Created By is Mandatory")
+	private String createdBy;
+
+}

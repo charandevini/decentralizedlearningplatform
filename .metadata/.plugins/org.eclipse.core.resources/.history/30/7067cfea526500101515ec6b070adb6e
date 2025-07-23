@@ -1,0 +1,5 @@
+package com.dlp.peerreviewhubservice.repository;
+
+public interface SubmissionRepository extends JpaR {
+
+}

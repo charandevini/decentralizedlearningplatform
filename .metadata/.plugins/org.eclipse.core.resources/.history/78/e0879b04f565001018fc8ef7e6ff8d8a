@@ -1,0 +1,13 @@
+package com.dlp.courseengineservice;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class CourseEngineServiceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(CourseEngineServiceApplication.class, args);
+	}
+
+}

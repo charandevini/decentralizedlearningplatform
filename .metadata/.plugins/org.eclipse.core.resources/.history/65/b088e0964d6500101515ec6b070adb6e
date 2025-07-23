@@ -1,0 +1,22 @@
+package com.dlp.progresstrackerservice.dto;
+
+import java.sql.Timestamp;
+
+import org.hibernate.annotations.UpdateTimestamp;
+
+import jakarta.persistence.Column;
+import jakarta.validation.constraints.NotBlank;
+
+public class QuizScoreRequest {
+	private Long enrollmentId;
+	
+    private Integer score;
+    
+    @Column(name = "created_by")
+	@NotBlank(message = "Created By is Mandatory")
+	private String createdBy;
+
+	@Column(name = "created_at")
+	@UpdateTimestamp
+	private Timestamp createdAt;
+}
