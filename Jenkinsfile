@@ -7,17 +7,25 @@ pipeline {
     }
 
     stages {
-       stage('Checkout') {
-           steps {
-               git branch: 'master', url: 'https://github.com/charandevini/decentralizedlearningplatform.git'
-           }
-       }
+        stage('Checkout') {
+            steps {
+                git branch: 'master', url: 'https://github.com/charandevini/decentralizedlearningplatform.git'
+            }
+        }
 
-         stage('Build Spring Boot App') {
-                    steps {
-                        sh 'mvn clean package -DskipTests'
-                    }
-         }
+        stage('Build Spring Boot App') {
+            steps {
+                echo '📦 Building all services:'
+                echo '''
+                    - naming-server
+                    - api-gateway
+                    - course-engine-service
+                    - progress-tracker-service
+                    - peer-review-hub-service
+                '''
+                sh 'mvn clean package -DskipTests'
+            }
+        }
 
         stage('Stop Old Containers') {
             steps {
@@ -33,8 +41,18 @@ pipeline {
 
         stage('Build & Deploy') {
             steps {
+                echo '🚀 Starting containers for:'
+                echo '''
+                    - postgres
+                    - naming-server
+                    - zipkin-server
+                    - api-gateway
+                    - course-engine-service
+                    - progress-tracker-service
+                    - peer-review-hub-service
+                '''
                 sh '''
-                    echo "⚙️ Building and deploying..."
+                    echo "⚙️ Building and deploying with docker-compose..."
                     docker-compose up -d --build
                 '''
             }
