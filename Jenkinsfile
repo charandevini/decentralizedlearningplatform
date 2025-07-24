@@ -12,26 +12,17 @@ pipeline {
             }
         }
 
-        stage('Build Spring Boot Apps') {
-            steps {
-                echo '📦 Building Spring Boot services individually...'
-                dir('naming-server') {
-                    sh 'mvn clean package -DskipTests'
-                }
-                dir('api-gateway') {
-                    sh 'mvn clean package -DskipTests'
-                }
-                dir('course-engine-service') {
-                    sh 'mvn clean package -DskipTests'
-                }
-                dir('progress-tracker-service') {
-                    sh 'mvn clean package -DskipTests'
-                }
-                dir('peer-review-hub-service') {
-                    sh 'mvn clean package -DskipTests'
-                }
-            }
-        }
+       stage('Build Spring Boot Apps') {
+           steps {
+               echo '📦 Auto-building all Maven projects...'
+               sh '''
+                   for dir in $(find . -name "pom.xml" -exec dirname {} \\;); do
+                       echo "🔧 Building $dir"
+                       (cd "$dir" && mvn clean package -DskipTests)
+                   done
+               '''
+           }
+       }
 
         stage('Stop Old Containers') {
             steps {
