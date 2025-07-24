@@ -2,7 +2,8 @@ pipeline {
     agent any
 
     environment {
-        COMPOSE_FILE = 'docker-compose.yaml'
+        // Unique project name to avoid Docker container name conflicts
+        COMPOSE_PROJECT_NAME = "springcloud_${BUILD_NUMBER}"
     }
 
     stages {
@@ -12,18 +13,17 @@ pipeline {
             }
         }
 
-        stage('Stop Running Containers') {
+        stage('Stop Old Containers') {
             steps {
                 sh '''
                     echo "🛑 Stopping old containers..."
                     docker-compose down || true
 
-                    echo "🧹 Removing all containers..."
+                    echo "🧹 Removing all stopped containers..."
                     docker rm -f $(docker ps -aq) || true
                 '''
             }
         }
-
 
         stage('Build & Deploy') {
             steps {
@@ -41,6 +41,10 @@ pipeline {
         }
         failure {
             echo '❌ Deployment failed!'
+        }
+        always {
+            echo '📦 Cleaning up exited containers...'
+            sh 'docker container prune -f || true'
         }
     }
 }
