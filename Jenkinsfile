@@ -17,9 +17,13 @@ pipeline {
                 sh '''
                     echo "🛑 Stopping old containers..."
                     docker-compose down || true
+
+                    echo "🧹 Removing all containers..."
+                    docker rm -f $(docker ps -aq) || true
                 '''
             }
         }
+
 
         stage('Build & Deploy') {
             steps {
