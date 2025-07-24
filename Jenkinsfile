@@ -15,7 +15,7 @@ pipeline {
         stage('Stop Existing Containers') {
             steps {
                 script {
-                    sh 'docker-compose down || true'
+                    sh 'docker compose down || true'
                 }
             }
         }
@@ -23,7 +23,7 @@ pipeline {
         stage('Deploy Microservices') {
             steps {
                 script {
-                    sh 'docker-compose up -d --build'
+                    sh 'docker compose up -d --build'
                 }
             }
         }
