@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git credentialsId: 'jenkins-ssh-key',git url: 'git@github.com:charandevini/decentralizedlearningplatform.git', branch: 'master'
+                git url: 'git@github.com:charandevini/decentralizedlearningplatform.git', branch: 'master'
             }
         }
 
