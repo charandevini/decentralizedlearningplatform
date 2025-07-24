@@ -7,11 +7,17 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/charandevini/decentralizedlearningplatform.git'
-            }
-        }
+       stage('Checkout') {
+           steps {
+               git branch: 'master', url: 'https://github.com/charandevini/decentralizedlearningplatform.git'
+           }
+       }
+
+         stage('Build Spring Boot App') {
+                    steps {
+                        sh 'mvn clean package -DskipTests'
+                    }
+         }
 
         stage('Stop Old Containers') {
             steps {
