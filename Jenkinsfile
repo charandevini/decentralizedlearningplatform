@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        COMPOSE_FILE = 'docker-compose.yml'  // Set docker-compose file as an env var (optional)
+        COMPOSE_FILE = 'docker-compose.yaml'
     }
 
     stages {
@@ -14,31 +14,26 @@ pipeline {
 
         stage('Stop Running Containers') {
             steps {
-                script {
-                    // Only remove containers from this compose project
-                    sh '''
-                        echo "🛑 Stopping existing containers..."
-                        docker-compose down || true
-                    '''
-                }
+                sh '''
+                    echo "🛑 Stopping old containers..."
+                    docker-compose down || true
+                '''
             }
         }
 
-        stage('Build & Start Services') {
+        stage('Build & Deploy') {
             steps {
-                script {
-                    sh '''
-                        echo "⚙️ Building and starting services..."
-                        docker-compose up -d --build
-                    '''
-                }
+                sh '''
+                    echo "⚙️ Building and deploying..."
+                    docker-compose up -d --build
+                '''
             }
         }
     }
 
     post {
         success {
-            echo '✅ Local deployment successful!'
+            echo '✅ Deployment successful!'
         }
         failure {
             echo '❌ Deployment failed!'
