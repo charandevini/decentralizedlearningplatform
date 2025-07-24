@@ -105,8 +105,10 @@ services:
     extra_hosts:
     - "host.docker.internal:host-gateway"
 
+
 volumes:
   postgres_data:
+  jenkins_home:
 
 networks:
   dlp-network:
