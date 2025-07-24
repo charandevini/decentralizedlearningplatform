@@ -1,39 +1,32 @@
 pipeline {
     agent any
 
-    environment {
-        COMPOSE_FILE = 'docker-compose.yaml'
-    }
-
     stages {
-        stage('Clone Repo') {
+        stage('Checkout') {
             steps {
-                git 'https://github.com/charandevini/decentralizedlearningplatform.git' // Change to your Git repo
+                git 'https://github.com/charandevini/decentralizedlearningplatform.git'
             }
         }
 
-        stage('Build Images') {
+        stage('Stop Running Containers') {
             steps {
-                sh 'docker-compose build'
+                sh '''
+                    docker-compose down || true
+                    docker rm -f $(docker ps -aq) || true
+                '''
             }
         }
 
-        stage('Stop Running Services') {
+        stage('Build & Start Services') {
             steps {
-                sh 'docker-compose down'
-            }
-        }
-
-        stage('Deploy Microservices') {
-            steps {
-                sh 'docker-compose up -d'
+                sh 'docker-compose up -d --build'
             }
         }
     }
 
     post {
         success {
-            echo '✅ Deployment completed successfully!'
+            echo '✅ Local deployment successful!'
         }
         failure {
             echo '❌ Deployment failed!'

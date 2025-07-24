@@ -104,23 +104,9 @@ services:
       MANAGEMENT.ZIPKIN.TRACING.ENDPOINT: http://zipkin-server:9411/api/v2/spans
     extra_hosts:
     - "host.docker.internal:host-gateway"
-    
-  jenkins:
-    image: jenkins/jenkins:lts
-    container_name: jenkins
-    user: root
-    ports:
-      - "8080:8080"
-      - "50000:50000"
-    volumes:
-      - jenkins_home:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock  # Required to control Docker from inside the container
-      - ./jenkins-docker:/usr/local/bin/docker     # Optional: Mount Docker CLI if needed
-
 
 volumes:
   postgres_data:
-  jenkins_home:
 
 networks:
   dlp-network:
